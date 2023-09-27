@@ -1,21 +1,18 @@
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { useLocation, Navigate, Outlet, redirect } from "react-router-dom";
+import Signup from "./signup/Signup";
 
 const PrivateRoutes = () => {
     const location = useLocation();
     const userr = useSelector((state) => state.userAuth.user);
-    let isAuthentic;
 
-    useEffect(() => {
-        console.log(userr);
-         isAuthentic = userr == null ? false:true;
-        console.log("isAuth"+isAuthentic);
-    }, [])
+    // const isAuthentic = userr == null? false: true;
+    const isAuthentic = true;
+    if(!isAuthentic){
+        return <Navigate to='/Signup' replace state={{from: location}}/>;
+        // return redirect("/Signup")
+    }
+    return <Outlet/>
     
-    return(
-
-        isAuthentic ? <Outlet/> : <h1>hii</h1>
-    )
 }
 export default PrivateRoutes;
