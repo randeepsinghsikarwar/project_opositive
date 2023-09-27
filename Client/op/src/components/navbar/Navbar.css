@@ -1,0 +1,94 @@
+.logo:hover{
+    box-shadow: 5px 5px ;  
+    transform: translate3d(-2px,-2px, 0px);
+}
+
+.logo:active{
+    transform: scale(0.99);
+}
+.logo{
+    border: 2px dashed black;
+    border-radius: 50%;
+    max-width: 12vw;
+    max-height: 12vw;
+    margin-bottom: 4vh;
+    align-self: center;
+    cursor: pointer;
+    transition: transform 400ms;
+    transition: box-shadow 400ms;
+    margin-left: 1.5vw;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+
+
+.right-panel {
+    display: flex;
+  }
+
+  
+.menu-panel-opened {
+    max-width: 15vw;
+    min-width: 15vw;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffc634;
+    height: 100vh;
+    cursor: default;
+      justify-content: space-between;
+    margin-left: 1rem;
+  }
+  
+  .menu-panel-opened .links a {
+    margin-bottom: 1rem;
+    width: 17vw;
+    font-family: 'Barlow Semi Condensed', sans-serif;        
+    font-size: 2.7rem;
+    text-decoration: none;
+    transition: transform 400ms;
+    cursor: default;
+    font-weight: lighter;
+    
+    
+  }
+  
+  .menu-panel-opened .links a:hover {
+      /* transform: scale(1.25); */
+      transform: scale3d(1, 1.2, 1);
+      background-color: #ffecd1 ;
+      display: inline-block;
+  }
+  
+  .links{
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+  }
+  .menu-panel-closed {
+    position: sticky;
+    height: 100vh;
+    max-width: 2.5vw;
+    min-width: 2.5vw;
+    background-color: #ffc634;
+    border-left: 2px dashed #ffecd1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor:default;
+    
+  }
+  
+  #menu-heading {
+    margin-top: 2rem;
+    rotate: 90deg;
+    font-size: 1.1rem;
+    font-family: "Cabin Sketch", cursive;
+
+  }
+  
+
+

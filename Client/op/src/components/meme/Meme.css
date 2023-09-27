@@ -1,0 +1,33 @@
+.meme {
+   width: 27vw;
+   height: 50vh;
+   object-fit: fill;
+   border: 1px dashed black;
+   border-bottom: none;
+   border-right: none;
+}
+
+.meme-panel {
+  display: flex;
+  flex-direction: column;
+  /* box-sizing: border-box; */
+  height: 100%;
+  /* width: 30vw; */
+  align-items: center;
+  
+}
+
+.next-meme-button{
+    height: 5vh;
+
+    width: 50vh;
+    /* width: fit-content; */
+    font-family: "Cabin Sketch", cursive;
+
+    border: 1px dashed black;
+border-right: none;
+    background-color: #ffc634;
+    font-size: 1.1rem;
+    width: 27vw; 
+  
+  }
