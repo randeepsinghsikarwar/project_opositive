@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     email: "",
     password: "",
-    cnfPassword: ""
+    cnfPassword: "",
+    reset: false
 }
 
 export const signupSlice = createSlice({
@@ -18,10 +19,13 @@ export const signupSlice = createSlice({
         },
         cnfPasswordChanged: (state, action) => {
             state.cnfPassword = action.payload;
+        },
+        resetCheck: (state) => {
+            state.reset = !state.reset
         }
 
     }
 })
 
-export const {emailChanged, passwordChanged, cnfPasswordChanged} = signupSlice.actions;
+export const {emailChanged, passwordChanged, cnfPasswordChanged, resetCheck} = signupSlice.actions;
 export default signupSlice.reducer;

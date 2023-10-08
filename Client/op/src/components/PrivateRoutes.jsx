@@ -1,22 +1,33 @@
-import { useSelector } from "react-redux";
-import { useLocation, Navigate, Outlet,  } from "react-router-dom";
-import Signup from "./signup/Signup";
-import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { auth } from "../firebase/firebase";
+import { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
-const PrivateRoutes = () => {
-    const location = useLocation();
-    const userr = useSelector((state) => state.userAuth.user);
-    const [isAuthentic, setAuthentic] = useState(true);
+import { setAuth } from "../redux/feature/authentication/AuthSlice";
 
-    useEffect(() => {
-        userr == null ? setAuthentic(false): setAuthentic(true)
-    })
-    
-    if(!isAuthentic){
-        return <Navigate to='/Signup' replace state={{from: location}}/>;
-        // return redirect("/Signup")
-    }
-    return <Outlet/>
-    
+export default function PrivateRoutes({ children }) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log("user logged")
+        dispatch(setAuth(user.uid));
+      } else {
+        dispatch(setAuth(null));
+        navigate("/");
+      }
+    });
+
+    return () => unsub();
+  }, [auth]);
+
+  return <>{children}</>;
 }
-export default PrivateRoutes;
+
+PrivateRoutes.propTypes = {
+  children: PropTypes.node,
+};

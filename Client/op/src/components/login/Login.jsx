@@ -3,20 +3,19 @@ import Navbar from "../navbar/Navbar";
 import Meme from "../meme/Meme";
 import {
   emailChanged,
+  resetCheck,
   passwordChanged,
 } from "../../redux/feature/userCred/UserCredsSlice";
-import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { onAuthStateChanged, sendPasswordResetEmail } from "firebase/auth";
 import Chating from "../chat/Chating";
 import {
-  auth,
   loginWithEmailAndPassword,
   signUpWithGoogle,
 } from "../../firebase/firebase";
-import { setAuth, setEmail } from "../../redux/feature/authentication/AuthSlice";
 import { Link } from "react-router-dom";
 import googleIcon from "../../assets/images/googleIcon.svg";
+
+import Reset from "../reset/Reset";
 
 export default function Login() {
   const menuOpen = useSelector((state) => state.navBar.isOpened);
@@ -24,20 +23,8 @@ export default function Login() {
   const email = useSelector((state) => state.signup.email);
   const password = useSelector((state) => state.signup.password);
   const user = useSelector((state) => state.userAuth.user);
-  const [passReset, setPassReset] = useState(false);
-  const [recoveryEmail, setRecoveryEmail] = useState("");
 
-  async function handleReset(e) {
-    e.preventDefault();
-    try {
-      await sendPasswordResetEmail(auth, recoveryEmail);
-      setPassReset(false);
-      alert(`Password recovery link has been sent to the ${recoveryEmail}`);
-    } catch (error) {
-      alert(error.message);
-    }
-    setRecoveryEmail("");
-  }
+  const reset = useSelector((state) => state.signup.reset);
 
   function handleLogin(e) {
     e.preventDefault();
@@ -48,18 +35,6 @@ export default function Login() {
     e.preventDefault();
     signUpWithGoogle();
   }
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        dispatch(setAuth(user.uid));
-        dispatch(setEmail(user.email));
-      } else {
-        dispatch(setAuth(null));
-      }
-    });
-
-    return () => unsubscribe();
-  });
 
   return (
     <div>
@@ -70,30 +45,8 @@ export default function Login() {
               <div className="login-logo-panel">{"OPositive"}</div>
               <div className="login-form-panel-main">
                 {!menuOpen && <Meme />}
-                {passReset ? (
-                  <div className="password-reset-panel">
-                    <input
-                      placeholder="Email"
-                      type="email"
-                      value={recoveryEmail}
-                      onChange={(e) => {
-                        setRecoveryEmail(e.target.value);
-                      }}
-                      id="recovery-email"
-                    />
-                    <button
-                    className="reset-password-button"
-                      onClick={(e) => {
-                        handleReset(e);
-                      }}
-                    >
-                      RESET
-                    </button>
-                    <p onClick={(e) => {
-                        e.preventDefault()
-                        setPassReset(false);
-                    }}>Login</p>
-                  </div>
+                {reset ? (
+                  <Reset />
                 ) : (
                   <div className="login-form">
                     <input
@@ -137,7 +90,7 @@ export default function Login() {
                       className="forgot-button"
                       onClick={(e) => {
                         e.preventDefault();
-                        setPassReset(true);
+                        dispatch(resetCheck())
                       }}
                     >
                       Forgot password?
