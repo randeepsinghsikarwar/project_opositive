@@ -7,39 +7,43 @@ import {
   passwordChanged,
 } from "../../redux/feature/userCred/UserCredsSlice";
 import { useDispatch, useSelector } from "react-redux";
-import Chating from "../chat/Chating";
 import {
   loginWithEmailAndPassword,
   signUpWithGoogle,
 } from "../../firebase/firebase";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import googleIcon from "../../assets/images/googleIcon.svg";
 
 import Reset from "../reset/Reset";
 
 export default function Login() {
-  const menuOpen = useSelector((state) => state.navBar.isOpened);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const menuOpen = useSelector((state) => state.navBar.isOpened);
   const email = useSelector((state) => state.signup.email);
   const password = useSelector((state) => state.signup.password);
-  const user = useSelector((state) => state.userAuth.user);
+  const user = useSelector((state) => state.userAuth.user)
 
   const reset = useSelector((state) => state.signup.reset);
 
   function handleLogin(e) {
     e.preventDefault();
-    loginWithEmailAndPassword(email, password);
+    loginWithEmailAndPassword(email, password)
+    .then(() => {
+        navigate('/Chating')
+    })
   }
 
   function handleGoogle(e) {
     e.preventDefault();
-    signUpWithGoogle();
+    signUpWithGoogle().then(() => {navigate('/Chating')})
   }
 
   return (
-    <div>
-      {!user ? (
-        <div className="main-login-parent">
+    
+        <>
+        {!user? (<div className="main-login-parent">
           <div className="login-left-panel">
             <div>
               <div className="login-logo-panel">{"OPositive"}</div>
@@ -101,10 +105,8 @@ export default function Login() {
             </div>
           </div>
           <Navbar />
-        </div>
-      ) : (
-        <Chating />
-      )}
-    </div>
+        </div>): <Navigate to='/Chating' state = {{from: location}} replace/>}
+        </>
+     
   );
 }

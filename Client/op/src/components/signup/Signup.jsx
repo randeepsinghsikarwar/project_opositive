@@ -1,25 +1,22 @@
 import "./Signup.css";
 import Navbar from "../navbar/Navbar";
 import Meme from "../meme/Meme";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link, Navigate, useLocation } from "react-router-dom";
+import {  useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   emailChanged,
   passwordChanged,
   cnfPasswordChanged,
 } from "../../redux/feature/userCred/UserCredsSlice";
-import { setAuth } from "../../redux/feature/authentication/AuthSlice";
-import { auth, signUpWithEmailAndPassword } from "../../firebase/firebase";
-import { onAuthStateChanged } from "firebase/auth";
-import Chating from "../chat/Chating";
+import {  signUpWithEmailAndPassword } from "../../firebase/firebase";
 import { signUpWithGoogle } from "../../firebase/firebase";
 import googleIcon from '../../assets/images/googleIcon.svg'
 
 export default function Signup() {
   const menuOpen = useSelector((state) => state.navBar.isOpened);
   const dispatch = useDispatch();
-
+  const location = useLocation();
   const email = useSelector((state) => state.signup.email);
   const password = useSelector((state) => state.signup.password);
   const cnfPassword = useSelector((state) => state.signup.cnfPassword);
@@ -43,17 +40,17 @@ export default function Signup() {
     }
   }
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        dispatch(setAuth(user.uid));
-      } else {
-        dispatch(setAuth(null));
-      }
-    });
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       dispatch(setAuth(user.uid));
+  //     } else {
+  //       dispatch(setAuth(null));
+  //     }
+  //   });
 
-    return () => unsubscribe();
-  });
+  //   return () => unsubscribe();
+  // });
 
   return (
     <div>
@@ -124,9 +121,8 @@ export default function Signup() {
           </div>
           <Navbar />
         </div>
-      ) : (
-        <Chating />
-      )}
+      ) : 
+        <Navigate to='/Chating' state = {{from: location}} replace/>}
     </div>
   );
 }

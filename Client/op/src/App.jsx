@@ -1,36 +1,45 @@
-
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import Login from "./components/login/Login";
+import Signup from "./components/signup/Signup";
+import Chating from "./components/chat/Chating";
+import Contact from "./components/contact/Contact";
+import Home from "./components/Home/Home";
+import PrivateRoutes from "./components/PrivateRoutes";
+import { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase/firebase";
+import { useDispatch } from "react-redux";
+import { setAuth } from "./redux/feature/authentication/AuthSlice";
 import "./App.css";
-import { Typewriter } from 'react-simple-typewriter'
-
-import Navbar from './components/navbar/Navbar.jsx';
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user)=> {
+      if(user){
+        dispatch(setAuth(user.uid));
+      } else{
+        dispatch(setAuth(null));
+      }
+    });
 
- 
+    return () => unsubscribe();
+  })
+
   return (
-    <div className="parent-panel">
-      <div className="main-panel">
-        <div className="brand-panel">{'OPositive'}</div>
-        {/* <p className="slogan-panel1">{'Not just a typical "TALK TO STRANGER" platform...'}</p> */}
-        <div className="slogan-fixed" id="slogan-fixed1">
-          {"Not a typical"}
-        </div>
-        <span className="slogan-variable">
-          <Typewriter
-          words={['Talk to Stranger', 'Random Chat', 'Stranger Chat', 'Digital Mingling', 'Connect with new people']}
-          cursor
-          cursorColor="black"
-          delaySpeed={2000}
-          typeSpeed={180}
-          loop={0}
-          />  
-        </span>
-        <div className="slogan-fixed">
-          {"Platform..."}
-        </div>
-      </div>
-      <Navbar/>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route path="" element={<Home />} />
+        <Route path="Login" element={<Login />} />
+        <Route path="Signup" element={<Signup />} />
+
+        <Route element={<PrivateRoutes />}>
+          <Route path="Chating" element={<Chating />} />
+          <Route path="Contact" element={<Contact />} />
+        </Route>
+      </Route>
+    </Routes>
   );
 }
 
