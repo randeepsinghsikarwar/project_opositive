@@ -13,37 +13,42 @@ import {
 } from "../../firebase/firebase";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import googleIcon from "../../assets/images/googleIcon.svg";
-
 import Reset from "../reset/Reset";
+import { useContext } from "react";
+import AuthContext from "../../Context/AuthProvider";
 
 export default function Login() {
+  const {setAuth} = useContext(AuthContext)
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const menuOpen = useSelector((state) => state.navBar.isOpened);
   const email = useSelector((state) => state.signup.email);
   const password = useSelector((state) => state.signup.password);
-  const user = useSelector((state) => state.userAuth.user)
+  const user = useSelector((state) => state.userAuth.user);
 
   const reset = useSelector((state) => state.signup.reset);
 
   function handleLogin(e) {
     e.preventDefault();
-    loginWithEmailAndPassword(email, password)
-    .then(() => {
-        navigate('/Chating')
-    })
+    loginWithEmailAndPassword(email, password).then(() => {
+      setAuth(user)
+      navigate("/Chating");
+    });
   }
 
   function handleGoogle(e) {
     e.preventDefault();
-    signUpWithGoogle().then(() => {navigate('/Chating')})
+    signUpWithGoogle().then(() => {
+      navigate("/Chating");
+    });
   }
 
   return (
-    
-        <>
-        {!user? (<div className="main-login-parent">
+    <>
+      {!user ? (
+        <div className="main-login-parent">
           <div className="login-left-panel">
             <div>
               <div className="login-logo-panel">{"OPositive"}</div>
@@ -94,7 +99,7 @@ export default function Login() {
                       className="forgot-button"
                       onClick={(e) => {
                         e.preventDefault();
-                        dispatch(resetCheck())
+                        dispatch(resetCheck());
                       }}
                     >
                       Forgot password?
@@ -105,8 +110,10 @@ export default function Login() {
             </div>
           </div>
           <Navbar />
-        </div>): <Navigate to='/Chating' state = {{from: location}} replace/>}
-        </>
-     
+        </div>
+      ) : (
+        <Navigate to="/Chating" state={{ from: location }} replace />
+      )}
+    </>
   );
 }

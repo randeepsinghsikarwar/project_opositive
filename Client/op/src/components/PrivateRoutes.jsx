@@ -1,13 +1,13 @@
-import { useSelector } from "react-redux";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-
+import { useContext } from "react";
+import AuthContext from "../Context/AuthProvider";
 
 export default function PrivateRoutes() {
-  const user = useSelector((state) => state.userAuth.user);
+  const {auth} = useContext(AuthContext) 
   const location = useLocation();
 
   return  (
-    user?
+    auth?
     <Outlet/>
     : <Navigate to = '/Login' state = {{from: location }} replace/>
   )

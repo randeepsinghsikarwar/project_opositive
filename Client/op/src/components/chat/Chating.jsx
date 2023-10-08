@@ -1,12 +1,14 @@
 import { logout } from "../../firebase/firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { setAuth } from "../../redux/feature/authentication/AuthSlice";
 import Navbar from "../navbar/Navbar";
 import "./Chating.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import {io} from 'socket.io-client';
+import  AuthContext  from "../../Context/AuthProvider";
+
 
 export default function Chating() {
+  const {setAuth} = useContext(AuthContext)
   const dispatch = useDispatch();
     const userName = useSelector((state) => state.userAuth.email)
     const username = setUsername();
@@ -77,6 +79,7 @@ export default function Chating() {
           className="login-button"
           onClick={() => {
             handleLogout();
+            setAuth(null);
           }}
         >
           logout
