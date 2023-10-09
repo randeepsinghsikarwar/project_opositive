@@ -1,9 +1,58 @@
 .all-messages{
+    padding-top: 1rem;
     height: 50vh;
-    border: 1px solid black;
+    border: none;
+    padding-left: 1rem;
     width: 70vw ;
+    
+    
+}
+
+.chating-panel{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5rem;
+    margin-left: 5rem;
+    border: 1px solid black;
+
+
 }
 
 .message-box{
-    width: 50vw;
+    width: 63vw;
+    height: 2rem;
+    padding-left: 1rem;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.50);
+    caret-color: red;
+    caret-shape: underscore;
+}
+
+.brand-panel{
+    margin-left: 5rem
+}
+
+.send-message{
+    color: #FDD935;
+    font-family: "Poiret One", cursive;
+    font-weight: bold;
+    
+    width: 9vw;
+    background-color: black;
+    height: 2rem;
+    border: none;
+}
+
+.bottom-button-textbox{
+    display: flex;
+}
+
+.ind-messages{
+    margin-bottom: 0.5rem;
+    word-wrap: break-word;
+}
+
+.ind-messages span{
+    color: red;
 }

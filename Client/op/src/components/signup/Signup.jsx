@@ -16,7 +16,6 @@ import AuthContext from "../../Context/AuthProvider";
 
 export default function Signup() {
   const {auth} = useContext(AuthContext)
-  const menuOpen = useSelector((state) => state.navBar.isOpened);
   const dispatch = useDispatch();
   const location = useLocation();
   const email = useSelector((state) => state.signup.email);
@@ -61,7 +60,7 @@ export default function Signup() {
             <div>
               <div className="login-logo-panel">{"OPositive"}</div>
               <div className="login-form-panel-main">
-                {!menuOpen && <Meme />}
+                <Meme />
                 <form className="login-form">
                   <input
                   placeholder="Email"

@@ -23,7 +23,6 @@ export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const menuOpen = useSelector((state) => state.navBar.isOpened);
   const email = useSelector((state) => state.signup.email);
   const password = useSelector((state) => state.signup.password);
 
@@ -51,7 +50,7 @@ export default function Login() {
             <div>
               <div className="login-logo-panel"><Logo/></div>
               <div className="login-form-panel-main">
-                {!menuOpen && <Meme />}
+                <Meme />
                 {reset ? (
                   <Reset />
                 ) : (

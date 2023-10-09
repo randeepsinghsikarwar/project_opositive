@@ -4,7 +4,7 @@
   background-color: transparent;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 a{
@@ -21,4 +21,20 @@ a{
   display: flex;
   flex-direction: column;
   margin-bottom: 2vh;
+}
+
+.logout-icon{
+  height: 2.3rem;
+  
+}
+
+.logout-button{
+  background-color: transparent;
+  border: none;
+  margin-top: 1.5rem;
+  cursor: pointer;
+}
+.logout-button-div{
+  display: flex;
+  justify-content: center;
 }

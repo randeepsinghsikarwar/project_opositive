@@ -9,9 +9,7 @@ function Home() {
   return (
     <div className="parent-panel">
       <div className="main-panel">
-        {/* <div className="brand-panel">{'OPositive'}</div> */}
         {<Logo/>}
-        {/* <p className="slogan-panel1">{'Not just a typical "TALK TO STRANGER" platform...'}</p> */}
         <div className="slogan-fixed" id="slogan-fixed1">
           {"Not a typical"}
         </div>

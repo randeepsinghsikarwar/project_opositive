@@ -1,5 +1,4 @@
-import { logout } from "../../firebase/firebase";
-// import {  useSelector } from "react-redux";
+import Logo from '../logo/logo'
 import Navbar from "../navbar/Navbar";
 import "./Chating.css";
 import { useEffect, useState, useContext } from "react";
@@ -8,7 +7,7 @@ import  AuthContext  from "../../Context/AuthProvider";
 
 
 export default function Chating() {
-  const {auth ,setAuthh} = useContext(AuthContext)
+  const {auth } = useContext(AuthContext)
     const userName = auth.email
     const username = setUsername();
     function setUsername(){
@@ -20,9 +19,13 @@ export default function Chating() {
   const[chatbox, setChatbox] = useState("");
 
   const sendMessage = (e) => {
-      e.preventDefault();
+    e.key === "Enter" && console.logn(e.type)
+      if(e.type==='click'){
+        e.preventDefault();
       socket.emit("chat", {chatbox, username})
       setChatbox('');
+
+      }
   }
 
   useEffect(() => {
@@ -32,39 +35,30 @@ export default function Chating() {
   })
 
 
-  function handleLogout() {
-    logout()
-      .then(() => {
-        setAuthh(null);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
   return (
     <div className="parent-panel">
       <div className="main-chat-panel">
-        <div className="brand-panel">{"OPositive"}        </div>
-        <div>{username && `Welcome ${username}`}</div>
+        <div className="brand-panel"> {<Logo/>} </div>
+        {/* <div>{username && `Welcome ${username}`}</div> */}
 
-        <div>
+        <div className="chating-panel">
           <div className="all-messages">
             {messages.map((payload, key) => {
               return (
-                <p key={key}><span>{payload.username == username ? 'you': payload.username}</span>:{payload.chatbox}</p>
+                <p className="ind-messages" key={key}><span>{payload.username == username ? 'you': payload.username}</span>:{payload.chatbox}</p>
               );
             })}
           </div>
 
           <div className="bottom">
-            <div>
+            <div className="bottom-button-textbox">
               <input
               className="message-box"
                 type="text"
                 value={chatbox}
                 onChange={(event) => {
                   setChatbox(event.target.value);
+                  onkeydown={sendMessage}
                 }}
               />
               <button className="send-message" onClick={sendMessage}>
@@ -74,14 +68,7 @@ export default function Chating() {
           </div>
         </div>
         {/* temp classname and button it is. */}
-        <button
-          className="login-button"
-          onClick={() => {
-            handleLogout();
-          }}
-        >
-          logout
-        </button>
+        
       </div>
       <div className="chat-right-panel">
         <Navbar />
