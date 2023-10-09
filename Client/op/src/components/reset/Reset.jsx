@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { emailChanged, resetCheck } from "../../redux/feature/userCred/UserCredsSlice";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
+import './Reset.css'
 
 export default function Reset() {
   const dispatch = useDispatch();
@@ -20,8 +21,8 @@ export default function Reset() {
 
   return (
     <div className="password-reset-panel">
+      <span>RESET</span>
       <input
-        placeholder="Email"
         type="email"
         onChange={(e) => {
           dispatch(emailChanged(e.target.value));
@@ -39,7 +40,7 @@ export default function Reset() {
       <p onClick = {(e) => {
         e.preventDefault();
         dispatch(resetCheck())
-      }}>LOGIN</p>
+      }}>login</p>
     </div>
   );
 }

@@ -2,20 +2,21 @@ import "./Signup.css";
 import Navbar from "../navbar/Navbar";
 import Meme from "../meme/Meme";
 import { Link, Navigate, useLocation } from "react-router-dom";
-import {  useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   emailChanged,
   passwordChanged,
   cnfPasswordChanged,
 } from "../../redux/feature/userCred/UserCredsSlice";
-import {  signUpWithEmailAndPassword } from "../../firebase/firebase";
+import { signUpWithEmailAndPassword } from "../../firebase/firebase";
 import { signUpWithGoogle } from "../../firebase/firebase";
-import googleIcon from '../../assets/images/googleIcon.svg'
+import googleIcon from "../../assets/images/googleIcon.svg";
 import AuthContext from "../../Context/AuthProvider";
+import Logo from "../logo/logo";
 
 export default function Signup() {
-  const {auth} = useContext(AuthContext)
+  const { auth } = useContext(AuthContext);
   const dispatch = useDispatch();
   const location = useLocation();
   const email = useSelector((state) => state.signup.email);
@@ -39,31 +40,18 @@ export default function Signup() {
           });
     }
   }
-
-  // useEffect(() => {
-  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
-  //     if (user) {
-  //       dispatch(setAuth(user.uid));
-  //     } else {
-  //       dispatch(setAuth(null));
-  //     }
-  //   });
-
-  //   return () => unsubscribe();
-  // });
-
   return (
     <div>
       {!auth ? (
         <div className="main-login-parent">
           <div className="login-left-panel">
             <div>
-              <div className="login-logo-panel">{"OPositive"}</div>
+              <div className="login-logo-panel">{<Logo />}</div>
               <div className="login-form-panel-main">
                 <Meme />
                 <form className="login-form">
+                  <p className="signup-heading">SIGNUP</p>
                   <input
-                  placeholder="Email"
                     onChange={(e) => {
                       dispatch(emailChanged(e.target.value));
                     }}
@@ -71,7 +59,6 @@ export default function Signup() {
                     id="login-email"
                   />
                   <input
-                  placeholder="Password"
                     type="password"
                     onChange={(e) => {
                       dispatch(passwordChanged(e.target.value));
@@ -79,10 +66,8 @@ export default function Signup() {
                     id="login-password"
                   />
 
-               
                   <input
                     type="password"
-                    placeholder="Confirm password"
                     onChange={(e) => {
                       dispatch(cnfPasswordChanged(e.target.value));
                     }}
@@ -90,39 +75,37 @@ export default function Signup() {
                   />
 
                   <div className="all-buttons">
-                  <button
-                    className="login-button"
-                    onClick={(e) => {
-                      handleSubmit(e);
-                    }}
-                  >
-                    SIGNUP
-                  </button>
-
-                  <button
-                  className="gmail-icon"
-                    onClick={(e) => {
-                      handleGoogle(e);
-                    }}
-                  >
-                    <img src={googleIcon} alt="google icon" />
-                  </button>
-
+                    <button
+                      className="login-button"
+                      onClick={(e) => {
+                        handleSubmit(e);
+                      }}
+                    >
+                      signup
+                    </button>
                   </div>
                   {error && <p>you sure both the passwords are same?</p>}
 
-                    <div className="old-user">
-                    already have an account?<Link to="/Login"> Login</Link>
-
-                    </div>
+                  <div className="all-buttons">
+                    <button
+                      className="gmail-icon"
+                      onClick={(e) => {
+                        handleGoogle(e);
+                      }}
+                    >
+                      <img src={googleIcon} alt="google icon" />
+                    </button>
+                    <Link to="/Login"> Login</Link>
+                  </div>
                 </form>
               </div>
             </div>
           </div>
           <Navbar />
         </div>
-      ) : 
-        <Navigate to='/Chating' state = {{from: location}} replace/>}
+      ) : (
+        <Navigate to="/Chating" state={{ from: location }} replace />
+      )}
     </div>
   );
 }

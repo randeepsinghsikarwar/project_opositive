@@ -6,13 +6,13 @@ import {
   resetCheck,
   passwordChanged,
 } from "../../redux/feature/userCred/UserCredsSlice";
+import googleIcon from '../../assets/images/googleIcon.svg'
 import { useDispatch, useSelector } from "react-redux";
 import {
   loginWithEmailAndPassword,
   signUpWithGoogle,
 } from "../../firebase/firebase";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
-import googleIcon from "../../assets/images/googleIcon.svg";
 import Reset from "../reset/Reset";
 import { useContext } from "react";
 import AuthContext from "../../Context/AuthProvider";
@@ -55,12 +55,12 @@ export default function Login() {
                   <Reset />
                 ) : (
                   <div className="login-form">
+                    <span>LOGIN</span>
                     <input
                       onChange={(e) => {
                         dispatch(emailChanged(e.target.value));
                       }}
                       type="email"
-                      placeholder="Email"
                       id="login-email"
                     />
                     <input
@@ -68,19 +68,21 @@ export default function Login() {
                         dispatch(passwordChanged(e.target.value));
                       }}
                       type="password"
-                      placeholder="Password"
                       id="login-password"
                     />
-                    <div className="all-buttons">
+                    <div>
                       <button
                         onClick={(e) => {
                           handleLogin(e);
                         }}
                         className="login-button"
                       >
-                        LOGIN
+                        login
                       </button>
-                      <button
+                      
+                    </div>
+                  <div  className="all-buttons">
+                  <button
                         className="gmail-icon"
                         onClick={(e) => {
                           handleGoogle(e);
@@ -88,10 +90,7 @@ export default function Login() {
                       >
                         <img src={googleIcon} alt="google icon" />
                       </button>
-                    </div>
-                    <div className="new-user">
-                      new user? <Link to="/Signup">Signup</Link>
-                    </div>
+                  <Link to="/Signup">Signup</Link>
                     <button
                       className="forgot-button"
                       onClick={(e) => {
@@ -101,6 +100,7 @@ export default function Login() {
                     >
                       Forgot password?
                     </button>
+                    </div>
                   </div>
                 )}
               </div>

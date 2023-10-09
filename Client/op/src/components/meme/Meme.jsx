@@ -20,15 +20,9 @@ export default function Meme() {
 
   return (
     <div className="meme-panel">
-      {meme && <img className="meme" src={meme} alt="meme" />}
-      <button
-        className="next-meme-button"
-        onClick={() => {
-          memeData();
-        }}
-      >
-        NEXT
-      </button>
+      {meme && <img className="meme" onClick={() => {
+        memeData();
+      }} src={meme} alt="meme" />}    
     </div>
   );
 }
