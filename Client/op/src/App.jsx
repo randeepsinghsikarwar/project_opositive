@@ -6,21 +6,24 @@ import Chating from "./components/chat/Chating";
 import Contact from "./components/contact/Contact";
 import Home from "./components/Home/Home";
 import PrivateRoutes from "./components/PrivateRoutes";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebase";
 import { useDispatch } from "react-redux";
-import { setAuth } from "./redux/feature/authentication/AuthSlice";
 import "./App.css";
+import AuthContext from "./Context/AuthProvider";
 
 function App() {
+  const {setAuthh} = useContext(AuthContext)
+
   const dispatch = useDispatch();
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user)=> {
       if(user){
-        dispatch(setAuth(user.uid));
+        setAuthh(user)
+
       } else{
-        dispatch(setAuth(null));
+        dispatch(setAuthh(null));
       }
     });
 

@@ -2,7 +2,7 @@ import "./Signup.css";
 import Navbar from "../navbar/Navbar";
 import Meme from "../meme/Meme";
 import { Link, Navigate, useLocation } from "react-router-dom";
-import {  useState } from "react";
+import {  useContext, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   emailChanged,
@@ -12,8 +12,10 @@ import {
 import {  signUpWithEmailAndPassword } from "../../firebase/firebase";
 import { signUpWithGoogle } from "../../firebase/firebase";
 import googleIcon from '../../assets/images/googleIcon.svg'
+import AuthContext from "../../Context/AuthProvider";
 
 export default function Signup() {
+  const {auth} = useContext(AuthContext)
   const menuOpen = useSelector((state) => state.navBar.isOpened);
   const dispatch = useDispatch();
   const location = useLocation();
@@ -21,7 +23,6 @@ export default function Signup() {
   const password = useSelector((state) => state.signup.password);
   const cnfPassword = useSelector((state) => state.signup.cnfPassword);
   const [error, setError] = useState(false);
-  const user = useSelector((state) => state.userAuth.user);
 
   function handleGoogle(e) {
     e.preventDefault();
@@ -54,7 +55,7 @@ export default function Signup() {
 
   return (
     <div>
-      {!user ? (
+      {!auth ? (
         <div className="main-login-parent">
           <div className="login-left-panel">
             <div>

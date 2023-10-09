@@ -16,24 +16,22 @@ import googleIcon from "../../assets/images/googleIcon.svg";
 import Reset from "../reset/Reset";
 import { useContext } from "react";
 import AuthContext from "../../Context/AuthProvider";
+import Logo from '../logo/logo'
 
 export default function Login() {
-  const {setAuth} = useContext(AuthContext)
-
+  const {auth} = useContext(AuthContext)
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const menuOpen = useSelector((state) => state.navBar.isOpened);
   const email = useSelector((state) => state.signup.email);
   const password = useSelector((state) => state.signup.password);
-  const user = useSelector((state) => state.userAuth.user);
 
   const reset = useSelector((state) => state.signup.reset);
 
   function handleLogin(e) {
     e.preventDefault();
     loginWithEmailAndPassword(email, password).then(() => {
-      setAuth(user)
       navigate("/Chating");
     });
   }
@@ -47,11 +45,11 @@ export default function Login() {
 
   return (
     <>
-      {!user ? (
+      {!auth ? (
         <div className="main-login-parent">
           <div className="login-left-panel">
             <div>
-              <div className="login-logo-panel">{"OPositive"}</div>
+              <div className="login-logo-panel"><Logo/></div>
               <div className="login-form-panel-main">
                 {!menuOpen && <Meme />}
                 {reset ? (

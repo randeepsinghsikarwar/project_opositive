@@ -1,0 +1,19 @@
+
+
+.logo-parent{
+    cursor: pointer;
+    margin-top: 7vh;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    
+}
+.logo-o{
+    font-family: 'Monofett', monospace;
+    font-size: 6rem;
+    margin-right: 1.2vw;
+}
+.logo-rest{
+    font-family: 'Monofett', monospace;
+    font-size: 4rem;
+}

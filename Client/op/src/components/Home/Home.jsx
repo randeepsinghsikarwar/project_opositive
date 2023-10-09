@@ -2,14 +2,15 @@
 import { Typewriter } from 'react-simple-typewriter'
 
 import Navbar from '../../components/navbar/Navbar';
-
+import Logo from '../logo/logo';
 function Home() {
 
  
   return (
     <div className="parent-panel">
       <div className="main-panel">
-        <div className="brand-panel">{'OPositive'}</div>
+        {/* <div className="brand-panel">{'OPositive'}</div> */}
+        {<Logo/>}
         {/* <p className="slogan-panel1">{'Not just a typical "TALK TO STRANGER" platform...'}</p> */}
         <div className="slogan-fixed" id="slogan-fixed1">
           {"Not a typical"}
@@ -17,6 +18,7 @@ function Home() {
         <span className="slogan-variable">
           <Typewriter
           words={['Talk to Stranger', 'Random Chat', 'Stranger Chat', 'Digital Mingling', 'Connect with new people']}
+          cursorStyle = "_"
           cursor
           cursorColor="black"
           delaySpeed={2000}

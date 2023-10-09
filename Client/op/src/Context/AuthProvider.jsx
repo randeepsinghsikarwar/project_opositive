@@ -5,10 +5,10 @@ import PropTypes from "prop-types";
 const AuthContext = createContext({});
 
 export const AuthProvider = ({children}) => {
-    const [auth, setAuth] = useState({});
+    const [auth, setAuthh] = useState({});
 
     return (
-        <AuthContext.Provider value={{auth, setAuth}}>
+        <AuthContext.Provider value={{auth, setAuthh}}>
             {children}
         </AuthContext.Provider>
     )
