@@ -13,7 +13,7 @@ export default function Chating() {
     function setUsername(){
       return userName
     }
-  const socket = io.connect("35.160.120.126");
+  const socket = io.connect('https://opositive.onrender.com');
   const[messages, setMessages] = useState([]);
 
   const[chatbox, setChatbox] = useState("");
