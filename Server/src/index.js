@@ -26,4 +26,4 @@ io.on("connection", (socket) => {
 // app.listen(5000, () => console.log("server is active...")); dont do this.
 
 //do this
-server.listen(5000, () => console.log("server is listening..."));
+server.listen(process.env.PORT, () => console.log("server is listening..."));
