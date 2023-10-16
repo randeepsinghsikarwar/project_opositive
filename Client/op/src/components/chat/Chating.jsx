@@ -13,7 +13,7 @@ export default function Chating() {
     function setUsername(){
       return userName
     }
-  const socket = io.connect("http://localhost:5000");
+  const socket = io.connect("35.160.120.126");
   const[messages, setMessages] = useState([]);
 
   const[chatbox, setChatbox] = useState("");
