@@ -11,7 +11,7 @@
 .parent-panel {
   display: flex;
   justify-content: space-between;
-  background-color: #fdd935;
+  background-color: #f8be0e;
   height: 100vh;
   max-width: 100vw;
   overflow: hidden;
