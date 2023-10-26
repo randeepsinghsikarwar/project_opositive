@@ -10,7 +10,18 @@ export default function Navbar() {
 
   return (
     <div className="nav-parent">
-      <div className="logout-button-div">
+     
+      <div className="upper-links">
+      
+        <NavLink id="login-link" to="/Login">
+          L
+        </NavLink>
+
+        <NavLink to="/Signup">S</NavLink>
+        <NavLink to="/Chating">C</NavLink>
+        <NavLink to="/Contact">C</NavLink>
+        <NavLink to="/Meet">D</NavLink>
+        {/* <div className="logout-button-div"> */}
         {auth && <button
         className="logout-button"
           onClick={(e) => {
@@ -26,16 +37,7 @@ export default function Navbar() {
         >
           <img className="logout-icon" src={logoutLogo} alt="logout-logo"/>
         </button>}
-      </div>
-      <div className="upper-links">
-        <NavLink id="login-link" to="/Login">
-          L
-        </NavLink>
-
-        <NavLink to="/Signup">S</NavLink>
-        <NavLink to="/Chating">C</NavLink>
-        <NavLink to="/Contact">C</NavLink>
-        <NavLink to="/Meet">D</NavLink>
+      {/* </div> */}
       </div>
     </div>
   );

@@ -16,27 +16,33 @@
   max-width: 100vw;
   overflow: hidden;
 }
+@media (max-width: 600px) {
+  .parent-panel{
+    flex-direction: column;
+  }
+}
+
 
 .main-panel {
   margin-left: 5rem;
 }
 
 .slogan-fixed {
-  font-size: 6rem;
+  font-size: 10vmin;
   font-family: "Poiret One", cursive;
   margin-top: 2vh;
   overflow: hidden;
 }
 
 .slogan-variable {
-  font-size: 6rem;
+  font-size: 10vmin;
   font-family: "Poiret One", cursive;
-  color: red;
+  color: rgb(221, 16, 85);
 }
 
 #slogan-fixed1 {
   margin-bottom: 2vh;
-  margin-top: 15vh;
+  margin-top: 10.5vmin;
 }
 
 .brand-panel {

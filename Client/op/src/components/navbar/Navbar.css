@@ -1,11 +1,13 @@
 .nav-parent{
-  height: 100vh;
-  border-left: 1px dashed black;
+  /* height: 100vh; */
+  /* border-left: 1px dashed black; */
   background-color: transparent;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  
+  
 }
+
 
 a{
   text-decoration: none;
@@ -14,27 +16,75 @@ a{
   color: black;
   margin-left: 1rem;
   margin-right: 1rem;
+  display: flex;
   
 }
 
 .upper-links{
   display: flex;
   flex-direction: column;
-  margin-bottom: 2vh;
+  margin-bottom: 1vh;
+ 
 }
 
 .logout-icon{
-  height: 2.3rem;
+  height: 2.2rem;
+
   
 }
 
 .logout-button{
   background-color: transparent;
   border: none;
-  margin-top: 1.5rem;
+  /* margin-top: 1.5rem; */
   cursor: pointer;
-}
-.logout-button-div{
   display: flex;
-  justify-content: center;
+  padding-top: 3px;
+
+
+}
+
+@media (max-width: 600px) {
+  .nav-parent{
+    border: none;
+    flex-direction: row;
+    
+  }
+  .upper-links{
+    border-top: 2px dashed black;
+    flex-direction: row;
+    width: 100vw;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    padding-top: 0.5rem;
+  }
+
+  a{
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+
+@media not (max-width: 600px) {
+ 
+  
+  .logout-button{
+    display: flex;
+    justify-content: center;
+    padding-left: 6px;
+    margin-top: 6px;
+    margin-bottom: 0.5rem;
+  }
+  .nav-parent{
+    justify-content: center;
+
+  }
+  .upper-links{
+    border-left: 2px dashed black;
+   
+  }
+  
 }

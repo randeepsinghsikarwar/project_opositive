@@ -2,7 +2,7 @@
 
 .logo-parent{
     cursor: pointer;
-    margin-top: 7vh;
+    margin-top: 5vmin;
     display: flex;
     flex-direction: row;
     align-items: baseline;
@@ -10,11 +10,13 @@
 }
 .logo-o{
     font-family: 'Monofett', monospace;
-    font-size: 9rem;
-    margin-right: 1.2vw;
+    font-size: 15vmin;
+    margin-right: 1.5vw;
+
 }
 .logo-rest{
     font-family: 'Monofett', monospace;
-    font-size: 5.6rem;
+    font-size: 10vmin;
+
 }
 
