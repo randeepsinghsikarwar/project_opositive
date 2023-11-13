@@ -16,10 +16,15 @@
 
 .login-form-panel-main {
   margin-top: 15vh;
-  max-height: 10vh;
+  max-height: 50vh;
   display: flex;
   margin-left: 26vw;
   flex-direction: row;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 5px;
+  /* background-color:  */
+
 }
 
 .password-reset-panel p {
