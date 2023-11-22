@@ -1,30 +1,33 @@
-const app = require('express')();
+const express  = require('express');
+const app = express();
+const http = require("http");
+const { Server } = require("socket.io");
 
-const server = require('http').createServer(app);
-const io = require('socket.io')(server, {
-   cors: {
-    origin: "*",
-    // methods: ["GET", "POST"],
-   } 
-});
+const server = http.createServer(app);
 
-app.get('/', (req, res)=> {
-    res.send("hello")
+const io = new Server(server, {
+    cors:{
+        origin: "http://localhost:3000"
+    },
 })
 
 io.on("connection", (socket) => {
-    
-    console.log("what is socket: ", socket);
-    console.log("socket is active to be connected");
-    
-});
-// socket.on("chat", (payload) => {
-//     console.log("what is our payload: ", payload);
-//     io.emit("chat", payload)
-// })
 
-// app.listen(5000, () => console.log("server is active...")); dont do this.
+    console.log("connected")
 
-//do this
-// server.listen(process.env.PORT||5000, () => console.log("server is listening..."));
-server.listen(5000, () => console.log("server is listening..."));
+    io.emit("new_user", {type: 'new_user', user_details: socket.id, payload: 'new user has joined'});
+    
+
+    socket.on("chat", (data) => {
+        console.log(data)
+        socket.broadcast.emit("recieve", data);
+    })
+
+    socket.on("disconnect", () => {
+        console.log("disconnected");
+    })
+})
+
+server.listen(3001, () => {
+    console.log('server is running');
+})

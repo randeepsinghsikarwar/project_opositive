@@ -10,7 +10,8 @@ function Home() {
     <div className="parent-panel">
       <div className="main-panel">
         {<Logo/>}
-        <div className="slogan-fixed" id="slogan-fixed1">
+      <div className='slogan'>
+      <div className="slogan-fixed" id="slogan-fixed1">
           {"Not a typical"}
         </div>
         <span className="slogan-variable">
@@ -18,7 +19,7 @@ function Home() {
           words={['Talk to Stranger', 'Random Chat', 'Stranger Chat', 'Digital Mingling', 'Connect with new people']}
           cursorStyle = "_"
           cursor
-          cursorColor="black"
+          cursorColor="red"
           delaySpeed={2000}
           typeSpeed={180}
           loop={0}
@@ -27,6 +28,7 @@ function Home() {
         <div className="slogan-fixed">
           {"Platform..."}
         </div>
+      </div>
       </div>
       <Navbar/>
     </div>

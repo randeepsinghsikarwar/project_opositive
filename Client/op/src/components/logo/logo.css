@@ -1,12 +1,11 @@
 
 
-.logo-parent{
+.logo-parent a{
     cursor: pointer;
     margin-top: 5vmin;
     display: flex;
     flex-direction: row;
     align-items: baseline;
-    
 }
 .logo-o{
     font-family: 'Monofett', monospace;
