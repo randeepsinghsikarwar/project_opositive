@@ -9,15 +9,18 @@
 }
 
 
-a{
+.upper-links ul li a{
   text-decoration: none;
   font-family: 'Monofett', monospace;
   font-size: 2.5rem;
   color: black;
-  margin-left: 1rem;
   margin-right: 1rem;
-  display: flex;
   
+}
+
+.nav-parent ul li{
+  margin-left: 1rem;
+  list-style-type: none;
 }
 
 .upper-links{

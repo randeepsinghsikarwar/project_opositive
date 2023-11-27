@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Monofett&display=swap");
 
 @import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
@@ -20,22 +19,24 @@
   background-position: 50vmax 20vmin;
 
   background-size: 80vh; */
-  height: 100vh;
+  /* height: 100vh; */
   max-width: 100vw;
   overflow: hidden;
 }
 
 /* testing */
 
-.parent-panel {
-  background-color: #f1c93b;
-  background-image: url(./assets//images/backpattern.jpg),
-    url(./assets/images/backpics.png) /* url(./assets/images/neww.png) */;
-  background-position: center, auto;
-  background-repeat: repeat, no-repeat;
-  background-size: contain, cover;
-  background-blend-mode: color-burn, luminosity;
-}
+/* .parent-panel { */
+
+
+  /* background-color: #f1c93b; */
+  /* background-image: url(./assets//images/backpattern.jpg), */
+    /* url(./assets/images/backpics.png) url(./assets/images/neww.png); */
+  /* background-position: center, auto; */
+  /* background-repeat: repeat, no-repeat; */
+  /* background-size: contain, cover; */
+  /* background-blend-mode: color-burn, luminosity; */
+/* } */
 
 /* testing */
 
@@ -51,6 +52,7 @@
 }
 
 .slogan{
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -66,7 +68,7 @@
 /* display: inline-block; */
 
 .slogan-fixed {
-  filter: drop-shadow(0px 0px 1.2px  black);
+  /* filter: drop-shadow(0px 0px 1.2px  black); */
   font-size: 10vmin;
   font-family: "Poiret One", cursive;
   margin-top: 2vh;
@@ -74,7 +76,7 @@
 }
 
 .slogan-variable {
-  filter: drop-shadow(0px 0px 1px white);
+  /* filter: drop-shadow(0px 0px 1px white); */
   font-size: 10vmin;
   font-family: "Poiret One", cursive;
   /* color: rgb(255, 0, 102) */
@@ -86,8 +88,8 @@
   margin-top: 10.5vmin;
 }
 
-.brand-panel {
+/* .brand-panel {
   font-size: 2rem;
   font-family: "Cabin Sketch", cursive;
   margin-top: 2rem;
-}
+} */

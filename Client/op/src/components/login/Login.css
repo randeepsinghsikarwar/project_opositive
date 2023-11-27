@@ -1,28 +1,28 @@
 .main-login-parent {
-  font-family: "Cabin Sketch", cursive;
-  background-color: rgb(253, 217, 53);
-  height: 100vh;
+  /* font-family: "Cabin Sketch", cursive; */
   display: flex;
-  width: 100vw;
   justify-content: space-between;
 }
 
 .login-form span{
+  
   font-family: "Poiret One", cursive;
   font-size: 4.5rem;
-  margin-bottom: 6rem;
+
+  margin-bottom: 1.5rem;
  
 }
 
 .login-form-panel-main {
+  backdrop-filter: blur(30px) ;
   margin-top: 15vh;
   max-height: 50vh;
   display: flex;
   margin-left: 26vw;
   flex-direction: row;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 10px;
   /* background-color:  */
 
 }
@@ -44,42 +44,37 @@
   width: 30vw;
   max-width: 30rem;
   background-color: transparent;
+  justify-content: center;
 }
 
-.login-logo-panel {
-  margin-top: 2rem;
-  margin-left: 5rem;
-  font-size: 2rem;
-  
-}
 
 #login-email,
 #recovery-email,
 #login-password,
 #login-password-confirm {
   margin-bottom: 1rem;
-
   height: 1.5rem;
   width: 25vw;
-  max-width: 25rem;
+  max-width: 20rem;
   border: none;
+  border-radius: 5px;
   background: rgba(255, 255, 255, 0.50);
   outline: none;
   padding: 5px;
   caret-color: red;
-  
 }
 
 .login-button,
 .reset-password-button {
 width: 26vw;
-max-width: 26rem;
+max-width: 20.5rem;
 padding: 5px;
 /* font-weight: bold; */
+border-radius: 5px;
   height: 2rem;
   font-size: 1.1rem;
   background-color: black;
-  font-family: "Poiret One", cursive;
+  /* font-family: "Poiret One", cursive; */
   color:rgb(253, 217, 53);
   border: none;
 }
@@ -91,17 +86,25 @@ padding: 5px;
 
 .all-buttons {
   display: flex;
+  flex-direction: column-reverse;
   align-items: center;
   justify-content: center;
   margin-top: 2.5rem;
+  font-family: "Poiret One", cursive;
+  font-weight: bold;
+
+  
 }
 
 .all-buttons a, .forgot-button{
+  /* font-family: "Poiret One", cursive; */
   font-family: "Poiret One", cursive;
   font-size: 1rem;
   color: red;
   text-decoration: underline;
   font-weight: bold;
+  margin-top: 0.5rem;
+  
 }
 
 

@@ -1,21 +1,20 @@
-
-
-.logo-parent a{
-    cursor: pointer;
-    margin-top: 5vmin;
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
+.logo-parent a {
+  text-decoration: none;
+  color: black;
+    width: fit-content;
+  cursor: pointer;
+  margin-top: 5vmin;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
 }
-.logo-o{
-    font-family: 'Monofett', monospace;
-    font-size: 15vmin;
-    margin-right: 1.5vw;
-
+.logo-o {
+padding-left: 5rem;
+  font-family: "Monofett", monospace;
+  font-size: 15vmin;
+  margin-right: 1.5vw;
 }
-.logo-rest{
-    font-family: 'Monofett', monospace;
-    font-size: 10vmin;
-
+.logo-rest {
+  font-family: "Monofett", monospace;
+  font-size: 10vmin;
 }
-

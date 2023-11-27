@@ -3,8 +3,7 @@
     height: 50vh;
     border: none;
     padding-left: 1rem;
-    width: 70vw ;
-    
+    backdrop-filter: blur(5px);
     
 }
 
@@ -14,8 +13,6 @@
     margin-top: 5rem;
     margin-left: 15vw;
     border: 1px solid black;
-
-
 }
 
 .message-box{

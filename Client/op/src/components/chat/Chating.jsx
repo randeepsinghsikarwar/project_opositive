@@ -50,7 +50,7 @@ export default function Chating() {
   return (
     <div className="parent-panel">
       <div className="main-chat-panel">
-        <div className="brand-panel"> {<Logo />} </div>
+        {/* <div className="brand-panel"> {<Logo />} </div> */}
         {/* <div>{username && `Welcome ${username}`}</div> */}
 
         <div className="chating-panel">
@@ -89,9 +89,9 @@ export default function Chating() {
         </div>
         {/* temp classname and button it is. */}
       </div>
-      <div className="chat-right-panel">
+      {/* <div className="chat-right-panel">
         <Navbar />
-      </div>
+      </div> */}
     </div>
   );
 }

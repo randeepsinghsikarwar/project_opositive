@@ -46,7 +46,7 @@ export default function Signup() {
         <div className="main-login-parent">
           <div className="login-left-panel">
             <div>
-              <div className="login-logo-panel">{<Logo />}</div>
+              {/* <div className="login-logo-panel">{<Logo />}</div> */}
               <div className="login-form-panel-main">
                 <Meme />
                 <form className="login-form">
@@ -101,7 +101,7 @@ export default function Signup() {
               </div>
             </div>
           </div>
-          <Navbar />
+          {/* <Navbar /> */}
         </div>
       ) : (
         <Navigate to="/Chating" state={{ from: location }} replace />

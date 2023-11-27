@@ -13,6 +13,8 @@ import { useDispatch } from "react-redux";
 import "./App.css";
 import AuthContext from "./Context/AuthProvider";
 
+import Testing from "./Testing";
+
 function App() {
   const {setAuthh} = useContext(AuthContext)
 
@@ -33,6 +35,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
+        {/* <Route path="testing" element={<Testing/>}/> */}
         <Route path="" element={<Home />} />
         <Route path="Login" element={<Login />} />
         <Route path="Signup" element={<Signup />} />

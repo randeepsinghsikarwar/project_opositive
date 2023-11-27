@@ -1,0 +1,16 @@
+.l1 {
+  display: flex;
+  background-image: url(../assets/images/backpattern.jpg),
+    url(../assets/images//backpics.png) /* url(./assets/images/neww.png) */;
+  background-blend-mode: color-burn, luminosity;
+  /* background-repeat: repeat, no-repeat; */
+  /* background-size: auto,cover; */
+  background-color: #f1c93b;
+    height: 100vh;
+  justify-content: space-between;
+}
+
+.l2 {
+  display: flex;
+  flex-direction: column;
+}

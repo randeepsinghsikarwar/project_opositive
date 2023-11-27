@@ -9,7 +9,7 @@ function Home() {
   return (
     <div className="parent-panel">
       <div className="main-panel">
-        {<Logo/>}
+        {/* {<Logo/>} */}
       <div className='slogan'>
       <div className="slogan-fixed" id="slogan-fixed1">
           {"Not a typical"}
@@ -30,7 +30,7 @@ function Home() {
         </div>
       </div>
       </div>
-      <Navbar/>
+      {/* <Navbar/>  */}
     </div>
   );
 }
