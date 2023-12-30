@@ -1,97 +1,98 @@
-import Logo from "../logo/logo";
-import Navbar from "../navbar/Navbar";
 import "./Chating.css";
 import { useEffect, useState, useContext } from "react";
-import { io } from "socket.io-client";
 import AuthContext from "../../Context/AuthProvider";
+import { io } from "socket.io-client";
+import { UserNameGen } from "./UserNameGen";
 
 export default function Chating() {
   const { auth } = useContext(AuthContext);
-  const userName = auth.email;
-  const username = setUsername();
-  function setUsername() {
-    return userName;
-  }
-
-  let socket;
-  useEffect(() => {
-    socket = io.connect("http://localhost:3001");
-
-    return () => {
-      socket.disconnect();
-    }
-  }, [])
-  // const socket = io.connect('https://opositive.onrender.com');
+  const [userName, setUserName] = useState("");
+  const [socket, setSocket] = useState(null);
   const [messages, setMessages] = useState([]);
-
   const [chatbox, setChatbox] = useState("");
 
-  const sendMessage = (e) => {
-      e.preventDefault();
-      // socket.emit("chat", { chatbox, username });
-      socket.emit("chat", {type: 'message', user_details: username, payload: chatbox})
-      setChatbox("");
-  };
+  useEffect(() => {
+    setUserName(UserNameGen());
+    const newUser = io("http://localhost:3001");
+    setSocket(newUser);
 
+    return () => newUser.disconnect();
+  }, []);
+
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
 
   useEffect(() => {
+    if(socket && auth.email && !userLoggedIn){
+      socket.emit("addUser", { userName: userName, email: auth.email });
+      setUserLoggedIn(true);
+    }
+  }, [socket, auth.email, userLoggedIn, userName]);
 
-    socket.on("new_user", (payload) => {
-      setMessages([...messages, payload]);
-    })
+  useEffect(() => {
+    if (socket) {
+      socket.on("recieve", (p) => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            user_email: p.user_email,
+            type: p.type,
+            user_details: p.user_details,
+            messageSent: p.payload,
+          },
+        ]);
+        // console.log(messages);
+      });
 
-    socket.on("recieve", (payload) => {
-      setMessages([...messages, payload]);
+      return () => {
+        socket.off("recieve");
+      };
+    }
+  }, [socket, messages]);
+
+  const sendMessage = (e) => {
+    e.preventDefault();
+
+    socket.emit("chat", {
+      type: "message",
+      user_email: auth.email,
+      user_details: userName,
+      payload: chatbox,
     });
-
-   
-  }, [messages]);
+    setChatbox("");
+  };
 
   return (
     <div className="parent-panel">
       <div className="main-chat-panel">
-        {/* <div className="brand-panel"> {<Logo />} </div> */}
-        {/* <div>{username && `Welcome ${username}`}</div> */}
-
         <div className="chating-panel">
           <div className="all-messages">
-            {messages.map((payload, key) => {
-              return (
-                <p className="ind-messages" key={key}>
+            {messages.map((mess, key) => (
+              <p className="ind-messages" key={key}>
+                {mess.type === "AKN" ? (
+                  <span>{mess.payload}</span>
+                ) : (
                   <span>
-                    {/* {payload.username == username ? "you" : payload.username} */}
-                    {payload.type == 'new_user' ? `${payload.payload} : ${payload.user_details}` : 
-                    payload.username == username ? "you" : payload.user_details
-                    } 
+                    {mess.user_details === userName ? "you" : mess.user_details}:{" "}
                   </span>
-                  :{payload.chatbox}
-                </p>
-              );
-            })}
+                )}
+                {mess.messageSent}
+              </p>
+            ))}
           </div>
 
-          <div className="bottom">
-            <div className="bottom-button-textbox">
-              <input
-                className="message-box"
-                type="text"
-                value={chatbox}
-                onChange={(event) => {
-                  setChatbox(event.target.value);
-              
-                }}
-              />
-              <button className="send-message" onClick={sendMessage}>
-                Send
-              </button>
-            </div>
+          <div className="bottom-button-textbox">
+            <input
+              className="message-box"
+              type="text"
+              value={chatbox}
+              onChange={(event) => setChatbox(event.target.value)}
+            />
+            <button className="send-message" onClick={sendMessage}>
+              Send
+            </button>
           </div>
         </div>
-        {/* temp classname and button it is. */}
       </div>
-      {/* <div className="chat-right-panel">
-        <Navbar />
-      </div> */}
     </div>
   );
 }

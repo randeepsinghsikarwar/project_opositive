@@ -1,0 +1,52 @@
+.contact-parent{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.contact-form{
+    backdrop-filter: blur(5px);
+    border: 20px solid;
+    
+    display: flex;
+    flex-direction: column;
+    border-image-source: url('../../assets/images/contact-border.png');
+    border-image-slice: 100;
+    border-image-repeat: round;
+}
+
+.contact-name{
+    border: none;
+    height: 1.5rem;
+    padding: 5px;
+    margin: 0.3rem;
+    outline: none;
+    border-radius: 5px;    
+}
+
+.contact-text-area{
+    padding: 5px;
+    border: none;
+    outline: none;
+    margin: 0.3rem;
+    border-radius: 5px;
+}
+
+.send-btn-parent{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.contact-send-btn{
+    border: none;
+    height: 3rem;
+    margin-right: 0.3rem;
+    cursor: pointer;
+    background-color: transparent;
+}
+.contact-send-btn img{
+    height: inherit;
+}
+

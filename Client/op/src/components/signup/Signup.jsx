@@ -1,5 +1,4 @@
 import "./Signup.css";
-import Navbar from "../navbar/Navbar";
 import Meme from "../meme/Meme";
 import { Link, Navigate, useLocation } from "react-router-dom";
 import { useContext, useState } from "react";
@@ -13,7 +12,6 @@ import { signUpWithEmailAndPassword } from "../../firebase/firebase";
 import { signUpWithGoogle } from "../../firebase/firebase";
 import googleIcon from "../../assets/images/googleIcon.svg";
 import AuthContext from "../../Context/AuthProvider";
-import Logo from "../logo/logo";
 
 export default function Signup() {
   const { auth } = useContext(AuthContext);
@@ -55,6 +53,7 @@ export default function Signup() {
                     onChange={(e) => {
                       dispatch(emailChanged(e.target.value));
                     }}
+                    placeholder="Email"
                     type="email"
                     id="login-email"
                   />
@@ -64,6 +63,7 @@ export default function Signup() {
                       dispatch(passwordChanged(e.target.value));
                     }}
                     id="login-password"
+                    placeholder="Password"
                   />
 
                   <input
@@ -72,6 +72,7 @@ export default function Signup() {
                       dispatch(cnfPasswordChanged(e.target.value));
                     }}
                     id="login-password-confirm"
+                    placeholder="Confirm Password"
                   />
 
                   <div className="all-buttons">

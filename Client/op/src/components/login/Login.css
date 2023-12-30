@@ -4,31 +4,27 @@
   justify-content: space-between;
 }
 
-.login-form span{
-  
+.login-form span {
   font-family: "Poiret One", cursive;
   font-size: 4.5rem;
 
   margin-bottom: 1.5rem;
- 
 }
 
 .login-form-panel-main {
-  backdrop-filter: blur(30px) ;
+  backdrop-filter: blur(5px);
   margin-top: 15vh;
   max-height: 50vh;
   display: flex;
   margin-left: 26vw;
   flex-direction: row;
-  /* border: 1px solid black; */
+  border: 2px dashed black;
   padding: 10px;
   border-radius: 10px;
   /* background-color:  */
-
 }
 
 .password-reset-panel p {
-  font-family: "Barlow Semi Condensed", sans-serif;
   font-weight: bold;
   text-decoration: underline;
   color: red;
@@ -47,18 +43,18 @@
   justify-content: center;
 }
 
-
 #login-email,
 #recovery-email,
 #login-password,
 #login-password-confirm {
-  margin-bottom: 1rem;
+  border: 1px dashed black;
+  margin-bottom: 0.5rem;
   height: 1.5rem;
   width: 25vw;
   max-width: 20rem;
-  border: none;
+  /* border: none; */
   border-radius: 5px;
-  background: rgba(255, 255, 255, 0.50);
+  background: rgba(255, 255, 255, 0.5);
   outline: none;
   padding: 5px;
   caret-color: red;
@@ -66,23 +62,21 @@
 
 .login-button,
 .reset-password-button {
-width: 26vw;
-max-width: 20.5rem;
-padding: 5px;
-/* font-weight: bold; */
-border-radius: 5px;
+  width: 26vw;
+  max-width: 20.5rem;
+  padding: 5px;
+
+  /* font-weight: bold; */
+  border-radius: 5px;
   height: 2rem;
   font-size: 1.1rem;
   background-color: black;
   /* font-family: "Poiret One", cursive; */
-  color:rgb(253, 217, 53);
-  border: none;
+  color: rgb(253, 217, 53);
+  border: none
 }
 
-.reset-password-button {
-  margin-right: 0;
-  margin-bottom: 1vh;
-}
+
 
 .all-buttons {
   display: flex;
@@ -92,11 +86,10 @@ border-radius: 5px;
   margin-top: 2.5rem;
   font-family: "Poiret One", cursive;
   font-weight: bold;
-
-  
 }
 
-.all-buttons a, .forgot-button{
+.all-buttons a,
+.forgot-button {
   /* font-family: "Poiret One", cursive; */
   font-family: "Poiret One", cursive;
   font-size: 1rem;
@@ -104,12 +97,7 @@ border-radius: 5px;
   text-decoration: underline;
   font-weight: bold;
   margin-top: 0.5rem;
-  
 }
-
-
-
-
 
 .login-left-panel {
   display: flex;
@@ -120,7 +108,7 @@ border-radius: 5px;
   border: none;
   height: 6vh;
   width: 6vh;
-background-color: transparent;
+  background-color: transparent;
 }
 
 .new-user {
@@ -134,7 +122,6 @@ background-color: transparent;
   text-decoration: underline;
   color: red;
 }
-
 
 .gmail-icon img {
   /* height:inherit; */

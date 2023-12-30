@@ -27,6 +27,7 @@ export default function Reset() {
         onChange={(e) => {
           dispatch(emailChanged(e.target.value));
         }}
+        placeholder="Email"
         id="recovery-email"
       />
       <button
@@ -35,7 +36,7 @@ export default function Reset() {
           handleReset(e);
         }}
       >
-        RESET
+        reset
       </button>
       <p onClick = {(e) => {
         e.preventDefault();

@@ -31,7 +31,7 @@ export default function Navbar() {
             <NavLink to="/Contact">C</NavLink>
           </li>
           <li>
-            <NavLink to="/Meet">D</NavLink>
+            <NavLink to="/Devs">D</NavLink>
           </li>
         </ul>
         {/* <div className="logout-button-div"> */}

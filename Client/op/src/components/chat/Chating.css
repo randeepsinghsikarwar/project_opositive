@@ -4,6 +4,11 @@
     border: none;
     padding-left: 1rem;
     backdrop-filter: blur(5px);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    width: inherit;
+    box-sizing: border-box;
+
     
 }
 
@@ -13,10 +18,11 @@
     margin-top: 5rem;
     margin-left: 15vw;
     border: 1px solid black;
+    width: 75vw;
 }
 
 .message-box{
-    width: 63vw;
+    width: 80vw;
     height: 2rem;
     padding-left: 1rem;
     border: none;
@@ -24,6 +30,7 @@
     background: rgba(255, 255, 255, 0.50);
     caret-color: red;
     caret-shape: underscore;
+    color: black;
 }
 
 .brand-panel{
@@ -43,6 +50,7 @@
 
 .bottom-button-textbox{
     display: flex;
+    /* flex-direction: column; */
 }
 
 .ind-messages{

@@ -12,8 +12,7 @@ import { auth } from "./firebase/firebase";
 import { useDispatch } from "react-redux";
 import "./App.css";
 import AuthContext from "./Context/AuthProvider";
-
-import Testing from "./Testing";
+import Devs from "./components/devs/Devs";
 
 function App() {
   const {setAuthh} = useContext(AuthContext)
@@ -44,6 +43,7 @@ function App() {
           <Route path="Chating" element={<Chating />} />
           <Route path="Contact" element={<Contact />} />
         </Route>
+        <Route path="Devs" element={<Devs/>}/>
       </Route>
     </Routes>
   );
