@@ -5,7 +5,7 @@ export default function Devs(){
         <div className='devs-parent-div'>
             <div className='mask-parent'>
             <img src={mypic2}/>
-
+            <h2>we are still under development</h2>
             </div>
         </div>
     )
