@@ -7,6 +7,9 @@ export default defineConfig({
   //dev setting
   server: {
     // host: '192.168.1.3',
+    // proxy: {
+      // '/api': 'http://localhost:backendka'
+    // }
     port: 3000,
   }
   //dev setting -end

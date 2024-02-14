@@ -31,15 +31,28 @@ function testing(){
 
 function sentimentAnalysis(m) {
   const childPython = spawn("python", ["main.py", m]);
-  return new Promise((resolve, reject) => {
-    childPython.stdout.on("data", (data) => {
-      const result = data.toString().trim();
-      resolve(result);
-    });
-    childPython.on("error", (err) => {
-      console.log(err);
-      reject(err);
-    });
+  return new Promise(async (resolve, reject) => {
+    try {
+      childPython.stdout.on("data", (data) => {
+        const result = data.toString().trim();
+        resolve(result);
+      });
+
+      childPython.on("error", (err) => {
+        console.error("Error executing Python process:", err);
+        reject(err);
+      });
+
+      childPython.on("close", (code) => {
+        if (code !== 0) {
+          console.error(`Python process exited with code ${code}`);
+          reject(`Python process exited with code ${code}`);
+        }
+      });
+    } catch (error) {
+      console.error("Error in sentimentAnalysis:", error);
+      reject(error);
+    }
   });
 }
 
@@ -72,16 +85,22 @@ io.on("connection", (socket) => {
     });
   });
 
-  socket.on("chat", (data) => {
-    // const sentimeResult = await sentimentAnalysis(data.payload);
-    // console.log(sentimeResult);
+  socket.on("chat", async (data) => {
+    try {
+      const sentimeResult = await sentimentAnalysis(data.payload);
+      console.log(sentimeResult);
   
-    io.emit("recieve", data)
-   
-    // sentimeResult > 0
-      // ?
-      // : io.emit("recieve", { ...data, payload: "Caution!" });
+      io.emit("recieve", data);
+  
+      sentimeResult > 0
+        ? io.emit("recieve", data)
+        : io.emit("recieve", { ...data, payload: "Caution!" });
+    } catch (error) {
+      console.error("Error in sentimentAnalysis:", error);
+      io.emit("recieve", { ...data, payload: "Error in sentiment analysis" });
+    }
   });
+  
 
   socket.on("disconnect", () => {
     onlineUser = onlineUser.filter((user) => user.socketId !== socket.id);

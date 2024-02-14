@@ -1,28 +1,53 @@
 import { useEffect, useState } from "react";
-import './Meme.css'
-export default function Meme() {
-  const [meme, getMeme] = useState([]);
+import HashLoader from "react-spinners/HashLoader";
+import axios from "axios";
+import "./Meme.css";
 
-  const apiIRL = "https://meme-api.com/gimme/1";
-  async function memeData() {
+
+export default function Meme() {
+  const [meme, setMeme] = useState("");
+  const [loading, setLoading] = useState(true);
+
+  const apiURL = "https://meme-api.com/gimme/1";
+
+  const fetchNewMeme = async () => {
     try {
-      const response = await fetch(apiIRL);
-      const data = await response.json();
-      getMeme(data.memes[0].url);
+      setLoading(true);
+      const response = await axios.get(apiURL);
+      setMeme(response.data.memes[0].url);
+      setLoading(false);
     } catch (error) {
-      console.error("error while fetching meme: ", error);
+      console.error(error);
     }
-  }
+  };
 
   useEffect(() => {
-    memeData();
-  }, []);
+    fetchNewMeme();
+  }, []); 
+
+  if (loading) {
+    return (
+      <div className="meme-panel">
+        <div className="meme">
+          <HashLoader
+          color = {"#000000"}
+          loading={loading}
+          size={40}
+          cssOverride={{
+            height: "100%",
+            display: "flex",
+            left: "50%",
+            right: "50%"
+          }}
+          />
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="meme-panel">
-      {meme && <img className="meme" onClick={() => {
-        memeData();
-      }} src={meme} alt="meme" />}    
+    <div className="meme-panel" onClick={fetchNewMeme}>
+      {meme && <img className="meme" src={meme} alt="meme" />}
     </div>
   );
 }

@@ -10,11 +10,11 @@
 
 .meme-panel {
   display: flex;
-  flex-direction: column;
   /* box-sizing: border-box; */
   height: 100%;
   /* width: 30vw; */
   align-items: center;
+  justify-content: center;
   
 }
 
