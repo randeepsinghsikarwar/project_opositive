@@ -10,42 +10,15 @@
 .parent-panel {
   display: flex;
   justify-content: space-between;
-  /* background-color: #f8be0e; */
-  /* background-color: #ffb627; */
-  /* background-color: #fdc921; */
-  /* background-image: url('../src/assets/images/warli-people.svg') ;
-  background-repeat: no-repeat;
   
-  background-position: 50vmax 20vmin;
-
-  background-size: 80vh; */
-  /* height: 100vh; */
   max-width: 100vw;
   overflow: hidden;
 }
 
-/* testing */
-
-/* .parent-panel { */
 
 
-  /* background-color: #f1c93b; */
-  /* background-image: url(./assets//images/backpattern.jpg), */
-    /* url(./assets/images/backpics.png) url(./assets/images/neww.png); */
-  /* background-position: center, auto; */
-  /* background-repeat: repeat, no-repeat; */
-  /* background-size: contain, cover; */
-  /* background-blend-mode: color-burn, luminosity; */
-/* } */
-
-/* testing */
 
 
-@media (max-width: 600px) {
-  .parent-panel {
-    flex-direction: column;
-  }
-}
 
 .main-panel {
   margin-left: 5rem;
@@ -59,16 +32,8 @@
   width: 80vw;
 
 }
-/* font-size: 24px; */
-/* font-weight: bold; */
-/* background: linear-gradient(to right, #ff8c00, #ffd700); You can use any background color or gradient */
-/* -webkit-background-clip: text; For older versions of WebKit browsers */
-/* background-clip: text; */
-/* color: transparent; */
-/* display: inline-block; */
 
 .slogan-fixed {
-  /* filter: drop-shadow(0px 0px 1.2px  black); */
   font-size: 10vmin;
   font-family: "Poiret One", cursive;
   margin-top: 2vh;
@@ -76,10 +41,8 @@
 }
 
 .slogan-variable {
-  /* filter: drop-shadow(0px 0px 1px white); */
   font-size: 10vmin;
   font-family: "Poiret One", cursive;
-  /* color: rgb(255, 0, 102) */
   color: rgba(225, 255, 225, 1);
 }
 
@@ -88,8 +51,3 @@
   margin-top: 10.5vmin;
 }
 
-/* .brand-panel {
-  font-size: 2rem;
-  font-family: "Cabin Sketch", cursive;
-  margin-top: 2rem;
-} */

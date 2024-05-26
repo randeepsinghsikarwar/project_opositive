@@ -32,7 +32,7 @@ export default function Meme() {
           <HashLoader
           color = {"#000000"}
           loading={loading}
-          size={40}
+          size={50}
           cssOverride={{
             height: "100%",
             display: "flex",

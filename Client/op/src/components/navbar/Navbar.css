@@ -46,7 +46,7 @@
 
 
 }
-
+/* 
 @media (max-width: 600px) {
   .nav-parent{
     border: none;
@@ -68,11 +68,9 @@
     margin-left: 0;
     margin-right: 0;
   }
-}
+} */
 
 
-@media not (max-width: 600px) {
- 
   
   .logout-button{
     display: flex;
@@ -90,4 +88,3 @@
    
   }
   
-}

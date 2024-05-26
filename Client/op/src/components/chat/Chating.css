@@ -4,21 +4,22 @@
     border: none;
     padding-left: 1rem;
     backdrop-filter: blur(5px);
+    /* backdrop-filter: invert(50%); */
     word-wrap: break-word;
     overflow-wrap: break-word;
     width: inherit;
     box-sizing: border-box;
-
-    
 }
 
+
 .chating-panel{
+    /* background-color: black; */
     display: flex;
     flex-direction: column;
-    margin-top: 5rem;
-    margin-left: 15vw;
-    border: 1px solid black;
-    width: 75vw;
+    border: 2px dashed black;
+    margin-top: 3rem;
+    margin-left: 5rem;
+    width: 80vw;
 }
 
 .message-box{
@@ -28,6 +29,7 @@
     border: none;
     outline: none;
     background: rgba(255, 255, 255, 0.50);
+    /* background: white; */
     caret-color: red;
     caret-shape: underscore;
     color: black;

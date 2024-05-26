@@ -13,23 +13,23 @@ import { useDispatch } from "react-redux";
 import "./App.css";
 import AuthContext from "./Context/AuthProvider";
 import Devs from "./components/devs/Devs";
+import RandomChat from "./components/chat/RandomChat";
 
 function App() {
-  const {setAuthh} = useContext(AuthContext)
+  const { setAuthh } = useContext(AuthContext);
 
   const dispatch = useDispatch();
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user)=> {
-      if(user){
-        setAuthh(user)
-
-      } else{
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setAuthh(user);
+      } else {
         dispatch(setAuthh(null));
       }
     });
 
     return () => unsubscribe();
-  })
+  });
 
   return (
     <Routes>
@@ -41,9 +41,11 @@ function App() {
 
         <Route element={<PrivateRoutes />}>
           <Route path="Chating" element={<Chating />} />
+          <Route path="RandomChat" element={<RandomChat />} />
           <Route path="Contact" element={<Contact />} />
         </Route>
-        <Route path="Devs" element={<Devs/>}/>
+        <Route path="Devs" element={<Devs />} />
+        <Route path="*" element={<div>invalid path!</div>} />
       </Route>
     </Routes>
   );
